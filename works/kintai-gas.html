@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スマホで打刻するだけで、給与計算と明細までできあがる | 丸岡 凌大</title>
+<meta name="description" content="単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="logo" href="../index.html">Profile</a>
+<nav><a href="../index.html#work">Work</a><a href="../index.html#overview">Overview</a><a class="btn" href="../index.html#contact">Contact</a></nav>
+</div></header>
+<main>
+<div class="crumb"><a href="../index.html">トップ</a> / <a href="../index.html#work">実績</a> / スマホで打刻するだけで、給与計算と明細までできあがる</div>
+<div class="tags"><span class="tag">勤怠・給与</span><span class="tag">試作</span></div>
+<h1>スマホで打刻するだけで、給与計算と明細までできあがる</h1>
+<p class="lead">単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。</p>
+<dl class="meta"><div><dt>種類</dt><dd>試作（仮のデータ）</dd></div><div><dt>対象</dt><dd>月50名ほどのスタッフ</dd></div><div><dt>道具</dt><dd>Google Apps Script</dd></div><div><dt>制作</dt><dd>約2時間</dd></div></dl>
+<h2>募集で挙がっていたこと</h2>
+<ul class="dots"><li>毎回ちがう単発のスタッフが来るので、入力をできるだけ簡単にしたい</li><li>日払い・月払い、時給・日給が混ざり、給与の計算が複雑</li><li>誰が何時間働き、いくら発生しているかを、開くだけで分かるようにしたい</li><li>月末に勤怠表と給与明細が自動でできている状態にしたい</li></ul>
+<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>紙やメモで出勤を集める</li><li>時給・日払いを見ながら手で計算</li><li>明細を1人ずつ作る</li></ol><div class="time">毎月の手作業</div></div><div class="after"><h3>これから</h3><ol><li>スマホのフォームで打刻</li><li>勤怠・給与・人件費が自動で出る</li><li>メニューから明細PDFを全員分</li></ol><div class="time">確認するだけ</div></div></div><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
+<h2>作ったもの</h2>
+<ol class="steps"><li>打刻フォーム: 1ページ・3問（氏名・打刻種別・備考）。出勤／休憩入／休憩戻／退勤を選んで送るだけで、休憩時間も自動で数える</li><li>給与の自動計算: 時給は日払い1,300円・月払い1,400円、特別時給があれば優先。日給・交通費・手当・控除・日払い済みから差引支払額まで</li><li>ダッシュボード: 本日の出勤人数と人件費、今月の累計、月末の支払予定額、未払いの合計、日ごとの人件費のグラフ</li><li>月の締め: 月ごとの一覧表を残し、過去の月もそのまま見返せる。打刻の漏れは赤で知らせる</li><li>給与明細・勤怠表: 1人1枚の A4 の PDF をメニューからまとめて作る</li><li>振込口座は管理者だけが見られる別のシートに分けて保護（試作では中身は入れていない）</li></ol>
+<h2>打刻フォームを試す</h2>
+<div class="demo">
+<div class="phone"><div class="screen">
+<div class="gf-bar"><span>9:41</span><span>見本</span></div>
+<form id="gf" class="gf-form" onsubmit="return false" novalidate>
+<div class="gf-card gf-head"><h3>打刻</h3><p>出勤・休憩・退勤のときに送ってください。</p><p class="gf-req">* 必須の質問です</p></div>
+<div class="gf-card gf-q" id="q1"><label class="t">氏名 <b>*</b></label><small>名前が無いときは管理者に伝えてください</small>
+<select id="who"><option value="">選択</option><option>佐藤 花子（S001）</option><option>田中 一郎（S002）</option><option>高橋 美咲（S003）</option><option>伊藤 健太（S004）</option><option>渡辺 さくら（S005）</option><option>山本 大輔（S006）</option><option>中村 結衣（S007）</option><option>小林 翔（S008）</option></select></div>
+<div class="gf-card gf-q" id="q2"><label class="t">打刻種別 <b>*</b></label><label class="r"><input type="radio" name="kind" value="出勤">出勤</label><label class="r"><input type="radio" name="kind" value="休憩入">休憩入</label><label class="r"><input type="radio" name="kind" value="休憩戻">休憩戻</label><label class="r"><input type="radio" name="kind" value="退勤">退勤</label></div>
+<div class="gf-card gf-q"><label class="t">備考</label><small>直行・直帰・早退など（任意）</small><input type="text" id="memo" placeholder="回答を入力"></div>
+<div class="gf-actions"><button class="gf-send" id="send" type="button">送信</button><button class="gf-clear" id="clr" type="button">フォームをクリア</button></div>
+</form>
+<div class="gf-card gf-head gf-done" id="done"><h3>打刻</h3><p>打刻しました（見本なので、どこにも送られていません）。</p>
+<p style="margin-top:14px"><button class="gf-clear" id="again" type="button">別の打刻を送る</button></p></div>
+</div></div>
+<div class="demo-note"><span class="badge">見本のフォーム</span>
+<p>本物の打刻フォームと同じ3問です。名前と種別を選んで「送信」を押すと、スプレッドシートの「打刻」シートに入る行が右に出ます。<b>見本なので、送信してもどこにも送られません。</b></p>
+<table class="rows"><thead><tr><th>タイムスタンプ</th><th>氏名</th><th>打刻種別</th><th>備考</th></tr></thead>
+<tbody id="rows"><tr><td>2026/11/09 8:58</td><td>佐藤 花子（S001）</td><td>出勤</td><td></td></tr></tbody></table>
+<p class="cap">本物では、この行をもとに勤怠・給与・ダッシュボードが自動で計算し直されます。</p></div>
+</div>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function kind() { var r = document.querySelector('input[name=kind]:checked'); return r ? r.value : ''; }
+  function td(t) { var c = document.createElement('td'); c.textContent = t; return c; }
+  $('send').addEventListener('click', function () {
+    var ok = true;
+    $('q1').classList.toggle('err', !$('who').value); $('q2').classList.toggle('err', !kind());
+    if (!$('who').value || !kind()) return;
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    var ts = d.getFullYear() + '/' + p(d.getMonth() + 1) + '/' + p(d.getDate()) + ' ' + d.getHours() + ':' + p(d.getMinutes());
+    var tr = document.createElement('tr'); tr.className = 'new';
+    [ts, $('who').value, kind(), $('memo').value].forEach(function (t) { tr.appendChild(td(t)); });
+    $('rows').appendChild(tr);
+    $('gf').style.display = 'none'; $('done').classList.add('on'); document.querySelector('.screen').scrollTop = 0;
+  });
+  function reset() { $('gf').reset(); $('q1').classList.remove('err'); $('q2').classList.remove('err'); }
+  $('clr').addEventListener('click', reset);
+  $('again').addEventListener('click', function () { reset(); $('done').classList.remove('on'); $('gf').style.display = ''; });
+})();
+</script>
+<h2>画面</h2><figure class="shot"><img src="img/kintai-dashboard.png" alt="ダッシュボード（仮のデータ）"><figcaption>ダッシュボード（仮のデータ）</figcaption></figure><figure class="shot"><img src="img/kintai-payslip.png" alt="自動で作られた給与明細の PDF（仮のデータ）"><figcaption>自動で作られた給与明細の PDF（仮のデータ）</figcaption></figure>
+<h2>ファイル</h2><div class="files"><a class="dl" href="https://drive.google.com/file/d/16Fl3DkxwH6Dg2sRmjVfX0S-8p8z5SZeD/view" target="_blank" rel="noopener"><span class="ic">XLSX</span><span><span class="nm">勤怠・給与（試作）のスプレッドシート</span><br><span class="sz">Excel・約1.3MB・Google ドライブで開きます（そこからダウンロードできます）</span></span></a><p>仮のデータ入り。ダッシュボード・勤怠・スタッフ・使い方（28手順）などのシートが見られます。自動計算とメニュー（Apps Script）は Excel には入らないため、数字は計算済みの値です。</p></div>
+<h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">打刻 紙・メモを集めて手入力</div><div class="k">AFTER</div><div class="after">スマホで送るだけ</div></div><div><div class="k">BEFORE</div><div class="name">給与の計算 人ごとに手計算</div><div class="k">AFTER</div><div class="after">打刻のたびに自動</div></div><div><div class="k">BEFORE</div><div class="name">給与明細 1人ずつ作成</div><div class="k">AFTER</div><div class="after">全員分をメニューから一括</div></div></div><p class="cap">仮のデータでの動作の確認です。計算の決まり（時給・日給・日払い・打刻の漏れ）は手元のテスト8件で確かめています。</p>
+<div class="two">
+<div><h2>使った道具</h2><div class="chips"><span>Google Apps Script</span><span>Googleフォーム</span><span>Googleスプレッドシート</span><span>Google ドライブ</span></div></div>
+<div><h2>同じ悩みがありそうな方</h2><ul class="dots"><li>スタッフの勤怠を紙やLINEで集めている</li><li>日払い・月払いが混ざっていて、給与計算に時間がかかる</li><li>明細づくりに毎月時間がかかる</li></ul></div>
+</div>
+<div class="cta"><p>同じような作業を、楽にできるか相談する</p><a href="../index.html#contact">お問い合わせ</a></div>
+<a class="back" href="../index.html#work">← 実績の一覧へ戻る</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>売上を入れるだけで、集計と入金の確認が自動で回る | 丸岡 凌大</title>
+<meta name="description" content="スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+<a class="logo" href="../index.html">Profile</a>
+<nav><a href="../index.html#work">Work</a><a href="../index.html#overview">Overview</a><a class="btn" href="../index.html#contact">Contact</a></nav>
+</div></header>
+<main>
+<div class="crumb"><a href="../index.html">トップ</a> / <a href="../index.html#work">実績</a> / 売上を入れるだけで、集計と入金の確認が自動で回る</div>
+<div class="tags"><span class="tag">売上管理</span><span class="tag">試作</span></div>
+<h1>売上を入れるだけで、集計と入金の確認が自動で回る</h1>
+<p class="lead">スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。</p>
+<dl class="meta"><div><dt>種類</dt><dd>試作（仮のデータ）</dd></div><div><dt>対象</dt><dd>月200件ほどの売上</dd></div><div><dt>道具</dt><dd>Google Apps Script・LINE</dd></div><div><dt>使い方</dt><dd>1操作1行の19手順つき</dd></div></dl>
+<h2>募集で挙がっていたこと</h2>
+<ul class="dots"><li>売上の入力・集計・進捗の管理を手作業でしていて、時間がかかる</li><li>手作業による入力や集計の間違いを防ぎたい</li><li>期日の前後に、メールか LINE で知らせてほしい</li><li>エラーが起きた時に、記録と知らせがほしい</li></ul>
+<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>売上をシートに手で入れる</li><li>月末に手で集計する</li><li>入金の遅れは表を見て探す</li></ol><div class="time">毎月の手作業</div></div><div class="after"><h3>これから</h3><ol><li>売上を1行入れる</li><li>金額・状態・集計が自動で出る</li><li>期日が近い・過ぎたら毎朝 LINE に届く</li></ol><div class="time">確認するだけ</div></div></div><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
+<h2>作ったもの</h2>
+<ol class="steps"><li>入力のたびの自動処理: 金額（数量×単価）と状態（完了・期日超過・期日間近・未処理）を自動で付け、入力の抜けや間違いはセルを赤くして「要確認」にする</li><li>日次・月次の集計: 日ごと・月ごと・担当ごと・取引先ごとの件数・売上・入金済み・未入金と、月ごとの棒グラフ</li><li>毎朝9時の通知: 期日超過と期日間近を、LINE（横にめくるカードで全件）とメールに1通ずつ。0件の日と、同じ日の2回目は送らない</li><li>LINE は、2025年3月に終わった LINE Notify の代わりに、LINE公式アカウントの Messaging API で送る。鍵はコードにもシートにも書かず、スクリプト プロパティに置く</li><li>エラーの記録と知らせ: 処理ごとの結果を「ログ」シートに残し、送れなかった時は管理者にメール。LINE のカードが断られた時は文字で送り直す</li><li>使い方のシート: 導入から毎日の入力・困った時まで、1操作1行・画面つきの19手順</li></ol>
+
+<h2>画面</h2><figure class="shot"><img src="img/uriage-sales.png" alt="「売上」シート。金額と状態は自動で付き、入力の間違いは赤くなる（仮のデータ）"><figcaption>「売上」シート。金額と状態は自動で付き、入力の間違いは赤くなる（仮のデータ）</figcaption></figure><figure class="shot"><img src="img/uriage-monthly.png" alt="「月次」シート。月ごと・担当ごとの集計と、月ごとの売上のグラフ（仮のデータ）"><figcaption>「月次」シート。月ごと・担当ごとの集計と、月ごとの売上のグラフ（仮のデータ）</figcaption></figure><figure class="shot" style="max-width:440px"><img src="img/uriage-line.png" alt="毎朝 LINE に届く通知。期日超過・期日間近を5件ずつのカードにして、横にめくって全件見られる（仮のデータ）"><figcaption>毎朝 LINE に届く通知。期日超過・期日間近を5件ずつのカードにして、横にめくって全件見られる（仮のデータ）</figcaption></figure>
+
+<h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">集計 月末に手で集計</div><div class="k">AFTER</div><div class="after">入力のたびに自動</div></div><div><div class="k">BEFORE</div><div class="name">入金の確認 表を見て探す</div><div class="k">AFTER</div><div class="after">毎朝 LINE とメールに届く</div></div><div><div class="k">BEFORE</div><div class="name">入力の間違い 後で気づく</div><div class="k">AFTER</div><div class="after">その場で赤く表示</div></div></div><p class="cap">仮のデータでの動作の確認です。判定・集計・通知の形は手元のテスト11件で確かめ、LINE とメールに実際に届くことも確かめています。</p>
+<div class="two">
+<div><h2>使った道具</h2><div class="chips"><span>Google Apps Script</span><span>Googleスプレッドシート</span><span>LINE Messaging API</span><span>Gmail</span></div></div>
+<div><h2>同じ悩みがありそうな方</h2><ul class="dots"><li>売上をスプレッドシートで手作業で管理している</li><li>入金の遅れに気づくのが遅れがち</li><li>毎月の集計に時間がかかる</li></ul></div>
+</div>
+<div class="cta"><p>同じような作業を、楽にできるか相談する</p><a href="../index.html#contact">お問い合わせ</a></div>
+<a class="back" href="../index.html#work">← 実績の一覧へ戻る</a>
+</main>
+</body>
+</html>
