@@ -68,10 +68,10 @@ html { scroll-behavior: smooth; }
 .r29 { height: 304px; }
 .r30 { flex: 0 0 auto; height: 100%; width: 100%; }
 .r30 > .image-background { background-position: center center; }
-.r31 { place-content: center flex-start; align-items: center; background: transparent; flex-flow: column; height: auto; margin: 0px; padding: 0px 0px 80px; width: 100%; }
+.r31 { place-content: center flex-start; align-items: center; background: transparent; flex-flow: column; height: auto; margin: 0px; padding: 0px 0px 56px; width: 100%; }
 .r32 { place-content: center; align-items: center; background: transparent; flex: 0 0 auto; flex-flow: column; }
 .r32 { height: calc(100% + 60px); margin: -60px 0px 0px; padding: 0px 80px; width: 800px; }
-.r33 { background: var(--s-color-f3a89775); border-radius: 50%; flex: 0 0 auto; max-width: 100%; }
+.r33 { background: var(--s-color-f3a89775); border-radius: 50%; flex: 0 0 auto; max-width: 100%; overflow: hidden; }
 .r33 { box-shadow: 0px 0px 0px 8px var(--s-color-5a88359d); height: 120px; margin: 0px 0px 24px; width: 120px; }
 .r34 { color: var(--s-color-c5a1d1c1); flex: 0 0 auto; height: auto; text-align: center; width: 100%; font-family: var(--s-font-408a7a1b); font-weight: 900; line-height: 1.4; justify-content: center; }
 .r34 { margin: 0px 0px 4px; font-size: 18px; }
@@ -112,7 +112,7 @@ html { scroll-behavior: smooth; }
 .r55 { place-content: center; align-items: center; background: var(--s-color-c3ab30de); flex: 0 0 auto; flex-flow: column; height: auto; opacity: 1; padding: 0px; width: 100%; }
 .r56 { color: var(--s-color-c5a1d1c1); flex: 0 0 auto; height: auto; text-align: left; width: 100%; font-family: var(--s-font-408a7a1b); font-weight: 400; line-height: 1.8; justify-content: flex-start; }
 .r56 { font-size: 16px; }
-.r57 { place-content: center; align-items: center; flex: 0 0 auto; flex-flow: column; margin: 40px 0px 0px; }
+.r57 { place-content: center; align-items: center; flex: 0 0 auto; flex-flow: column; margin: 0px; }
 .r57 { padding: 0px 80px; width: 1120px; }
 .r58 { place-content: stretch flex-start; align-items: stretch; flex: 0 0 auto; padding: 0px; width: 100%; }
 .r58 { flex-flow: wrap; gap: 16px; }
@@ -794,3 +794,11 @@ header.is-open nav li, header.is-open nav a { width: auto !important; white-spac
 /* 添付欄: ブラウザの「ファイルを選択」ボタンを見せず、STUDIO の枠全体で選べるようにする */
 label.file.sd { position: relative; cursor: pointer; }
 label.file.sd input[type=file] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+
+/* お問い合わせフォームの受け口（contact.js）用 */
+.hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+#contact-form { position: relative; }
+.cf-turnstile-slot { margin: 24px 0 0; min-height: 0; }
+.form-status { margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: var(--s-color-c5a1d1c1); }
+.form-status.is-error { color: #b4231a; }
+#contact-form button[disabled] { opacity: .6; cursor: wait; }
