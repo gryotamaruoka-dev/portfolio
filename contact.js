@@ -12,6 +12,18 @@
   const MAX_FILE = 5 * 1024 * 1024;
   const OK_EXT = ['pdf', 'png', 'jpg', 'jpeg', 'gif', 'webp', 'docx', 'xlsx', 'pptx', 'csv', 'txt'];
   let widgetId = null;
+  // 受け口が「どの項目ではじいたか」を返した時の案内（受け口の logic.js の field と同じ名前）
+  const FIELD_HELP = {
+    name: 'お名前は 50 文字まででご記入ください。',
+    email: 'メールアドレスの形をご確認ください（例 example@abc.com）。',
+    tel: '電話番号は数字とハイフンで、20 文字までご記入ください。',
+    kind: 'ご相談の種類を選んでください。',
+    hope: 'ご希望を選んでください。',
+    message: 'お問い合わせ内容は 5〜3000 文字でご記入ください。',
+    consent: 'プライバシーポリシーへの同意にチェックを入れてください。',
+    file_type: '添付できるのは PDF・画像・Word・Excel・PowerPoint・CSV・テキストです。',
+    file_size: '添付は 5MB までです。'
+  };
 
   function say(text, isError) {
     status.textContent = text; // textContent なので、文字が HTML として動くことはない
@@ -48,6 +60,10 @@
       if (!OK_EXT.includes(ext)) { say('添付できるのは PDF・画像・Word・Excel・PowerPoint・CSV・テキストです。', true); return; }
       if (file.size > MAX_FILE) { say('添付は 5MB までです。大きいファイルは、返信のメールでお送りください。', true); return; }
     }
+    // 受け口と同じ長さの決まりを、送る前にここでも確かめる（前後の空白は受け口で取られるので、取ってから数える）
+    const msgLen = String(fd.get('お問い合わせ内容') || '').trim().length;
+    if (msgLen < 5 || msgLen > 3000) { say(`お問い合わせ内容は 5〜3000 文字でご記入ください（今は ${msgLen} 文字です）。`, true); return; }
+    if (!String(fd.get('お名前') || '').trim()) { say('お名前をご記入ください。', true); return; }
     const token = (sitekey && window.turnstile && widgetId !== null) ? window.turnstile.getResponse(widgetId) : '';
     if (sitekey && !token) { say('「人間であることを確認」が終わってから、もう一度送信してください。', true); return; }
 
@@ -70,8 +86,10 @@
         say('受け付けました。内容を確認して、折り返しご連絡します。');
       } else if (out.error === 'busy') {
         say('ただいま混み合っています。時間をおいてもう一度お試しください。', true);
+      } else if (out.field && FIELD_HELP[out.field]) {
+        say(FIELD_HELP[out.field], true);
       } else {
-        say('送信できませんでした。入力内容をご確認のうえ、もう一度お試しください。解決しない場合は g.ryota.maruoka@gmail.com までご連絡ください。', true);
+        say('送信できませんでした。少し時間をおいて、ページを読み込み直してからもう一度お試しください。解決しない場合は g.ryota.maruoka@gmail.com までご連絡ください。', true);
       }
     } catch (e) {
       say('送信できませんでした。通信の状態をご確認のうえ、もう一度お試しください。', true);
