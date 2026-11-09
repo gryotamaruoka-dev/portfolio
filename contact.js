@@ -21,8 +21,9 @@
     hope: 'ご希望を選んでください。',
     message: 'お問い合わせ内容は 5〜3000 文字でご記入ください。',
     consent: 'プライバシーポリシーへの同意にチェックを入れてください。',
-    file_type: '添付できるのは PDF・画像・Word・Excel・PowerPoint・CSV・テキストです。',
-    file_size: '添付は 5MB までです。'
+    file_type: '添付の形を確かめられませんでした。PDF・画像・Word・Excel・PowerPoint・CSV・テキスト（UTF-8）でお送りください。',
+    file_size: '添付は 5MB までです。',
+    file_empty: '添付のファイルが空（0バイト）です。ファイルを選び直してください。'
   };
 
   function say(text, isError) {
@@ -30,16 +31,26 @@
     status.classList.toggle('is-error', !!isError);
   }
 
-  // Turnstile を読み込み、送信ボタンの上に置く
-  if (sitekey) {
+  // Turnstile は、フォームに触れた時に初めて読み込み、送信ボタンの上に置く。
+  // なぜ: Turnstile の枠（challenges.cloudflare.com）は、ブラウザの機能を調べる時に自分の枠の中で
+  // 警告をコンソールに出す（こちらのコードでは消せない）。ページを開いただけの人には出さないため。
+  let turnstileRequested = false;
+  let turnstileFailed = false;
+  const MAIL = 'g.ryota.maruoka@gmail.com';
+  function loadTurnstile() {
+    if (!sitekey || turnstileRequested) return;
+    turnstileRequested = true;
     window.onTurnstileLoad = function () {
       widgetId = window.turnstile.render('#turnstile-slot', { sitekey, language: 'ja', theme: 'light' });
     };
     const s = document.createElement('script');
     s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit';
     s.async = true;
+    // 広告ブロッカーや会社のネットワークで読めない時は、メールでの連絡を案内する（何度押しても送れないままにしない）
+    s.onerror = () => { turnstileFailed = true; };
     document.head.appendChild(s);
   }
+  ['focusin', 'pointerdown', 'keydown'].forEach(ev => form.addEventListener(ev, loadTurnstile, { once: true }));
 
   function readFile(file) {
     return new Promise((resolve, reject) => {
@@ -58,6 +69,7 @@
     if (file) {
       const ext = (file.name.split('.').pop() || '').toLowerCase();
       if (!OK_EXT.includes(ext)) { say('添付できるのは PDF・画像・Word・Excel・PowerPoint・CSV・テキストです。', true); return; }
+      if (file.size === 0) { say('添付のファイルが空（0バイト）です。ファイルを選び直してください。', true); return; }
       if (file.size > MAX_FILE) { say('添付は 5MB までです。大きいファイルは、返信のメールでお送りください。', true); return; }
     }
     // 受け口と同じ長さの決まりを、送る前にここでも確かめる（前後の空白は受け口で取られるので、取ってから数える）
@@ -65,7 +77,14 @@
     if (msgLen < 5 || msgLen > 3000) { say(`お問い合わせ内容は 5〜3000 文字でご記入ください（今は ${msgLen} 文字です）。`, true); return; }
     if (!String(fd.get('お名前') || '').trim()) { say('お名前をご記入ください。', true); return; }
     const token = (sitekey && window.turnstile && widgetId !== null) ? window.turnstile.getResponse(widgetId) : '';
-    if (sitekey && !token) { say('「人間であることを確認」が終わってから、もう一度送信してください。', true); return; }
+    if (sitekey && !token) {
+      if (turnstileFailed || !window.turnstile) {
+        say(`送信前の確認（Cloudflare）を読み込めませんでした。広告ブロッカーなどを止めて読み込み直すか、お手数ですが ${MAIL} までメールでご連絡ください。`, true);
+      } else {
+        say('「人間であることを確認」が終わってから、もう一度送信してください。', true);
+      }
+      return;
+    }
 
     button.disabled = true;
     say('送信しています…');
@@ -79,7 +98,8 @@
       if (file) body.file = { name: file.name, data: await readFile(file) };
       // text/plain で送る（ブラウザの事前確認が要らない形。中身は JSON）
       const res = await fetch(endpoint, { method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'text/plain;charset=utf-8' } });
-      const out = await res.json();
+      let out;
+      try { out = await res.json(); } catch { out = { ok: false, error: 'server' }; }
       if (out.ok) {
         form.reset();
         form.querySelectorAll('label.file input').forEach(i => i.dispatchEvent(new Event('change')));
@@ -89,10 +109,10 @@
       } else if (out.field && FIELD_HELP[out.field]) {
         say(FIELD_HELP[out.field], true);
       } else {
-        say('送信できませんでした。少し時間をおいて、ページを読み込み直してからもう一度お試しください。解決しない場合は g.ryota.maruoka@gmail.com までご連絡ください。', true);
+        say(`送信できませんでした。少し時間をおいて、ページを読み込み直してからもう一度お試しください。解決しない場合は ${MAIL} までご連絡ください。`, true);
       }
     } catch (e) {
-      say('送信できませんでした。通信の状態をご確認のうえ、もう一度お試しください。', true);
+      say(`送信できませんでした。通信の状態をご確認のうえ、もう一度お試しください。解決しない場合は ${MAIL} までご連絡ください。`, true);
     } finally {
       button.disabled = false;
       if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);

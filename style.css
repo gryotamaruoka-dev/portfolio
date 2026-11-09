@@ -802,3 +802,7 @@ label.file.sd input[type=file] { position: absolute; inset: 0; width: 100%; heig
 .form-status { margin: 12px 0 0; font-size: 14px; line-height: 1.7; color: var(--s-color-c5a1d1c1); }
 .form-status.is-error { color: #b4231a; }
 #contact-form button[disabled] { opacity: .6; cursor: wait; }
+
+/* アイコンの書体（Material Icons / Symbols）が読めなかった時、アイコンの名前（keyboard_arrow_down など）が
+   文字のまま横に伸びて、スマホ幅で横にはみ出す。読めない時でもアイコン1つ分の幅に収める */
+.material-icons, .material-symbols-outlined, .material-symbols { display: inline-block; max-width: 1.25em; overflow: hidden; white-space: nowrap; }
