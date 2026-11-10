@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- meta:start（tools/release_meta.py が入れる。手で直さない） -->
 <title>売上を入れるだけで、集計と入金の確認が自動で回る | 丸岡 凌大</title>
-<meta name="description" content="スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<meta name="description" content="スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。">
 <link rel="canonical" href="https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html">
 <meta property="og:title" content="売上を入れるだけで、集計と入金の確認が自動で回る | 丸岡 凌大">
-<meta property="og:description" content="スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<meta property="og:description" content="スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。">
 <meta property="og:url" content="https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://gryotamaruoka-dev.github.io/portfolio/assets/og/uriage-gas.png">
@@ -23,8 +23,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://gryotamaruoka-dev.github.io/portfolio/"}, {"@type": "ListItem", "position": 2, "name": "実績", "item": "https://gryotamaruoka-dev.github.io/portfolio/#work"}, {"@type": "ListItem", "position": 3, "name": "売上を入れるだけで、集計と入金の確認が自動で回る", "item": "https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "売上を入れるだけで、集計と入金の確認が自動で回る", "description": "スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/og/uriage-gas.png", "author": {"@type": "Person", "name": "丸岡 凌大", "alternateName": "Ryota Maruoka", "jobTitle": "AI業務効率化エンジニア", "url": "https://gryotamaruoka-dev.github.io/portfolio/", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/profile.webp", "email": "mailto:g.ryota.maruoka@gmail.com", "address": {"@type": "PostalAddress", "addressRegion": "大阪府", "addressCountry": "JP"}, "knowsAbout": ["AIを使った業務の効率化・自動化", "業務システム・ツールの開発", "書類やPDFの読み取り・データ化", "Google Apps Script"]}, "inLanguage": "ja", "mainEntityOfPage": "https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gryotamaruoka-dev.github.io/portfolio/"}, {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://gryotamaruoka-dev.github.io/portfolio/#work"}, {"@type": "ListItem", "position": 3, "name": "売上を入れるだけで、集計と入金の確認が自動で回る", "item": "https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "売上を入れるだけで、集計と入金の確認が自動で回る", "description": "スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。 使った道具はGoogle Apps Script・Googleスプレッドシート・LINE Messaging API・Gmailです。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/og/uriage-gas.png", "author": {"@type": "Person", "name": "丸岡 凌大", "alternateName": "Ryota Maruoka", "jobTitle": "AI業務効率化エンジニア", "url": "https://gryotamaruoka-dev.github.io/portfolio/", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/profile.webp", "email": "mailto:g.ryota.maruoka@gmail.com", "address": {"@type": "PostalAddress", "addressRegion": "大阪府", "addressCountry": "JP"}, "knowsAbout": ["AIを使った業務の効率化・自動化", "業務システム・ツールの開発", "書類やPDFの読み取り・データ化", "Google Apps Script"]}, "inLanguage": "ja", "mainEntityOfPage": "https://gryotamaruoka-dev.github.io/portfolio/works/uriage-gas.html"}</script>
 <!-- meta:end -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
@@ -35,26 +35,37 @@
 <a class="logo" href="../index.html">Profile</a>
 <nav><a href="../index.html#work">Work</a><a href="../index.html#overview">Overview</a><a class="btn" href="../index.html#contact">Contact</a></nav>
 </div></header>
+<nav class="crumb" aria-label="パンくずリスト"><ol>
+<li><a href="../index.html">ホーム</a></li><li><a href="../index.html#work">Work</a></li><li aria-current="page">売上を入れるだけで、集計と入金の確認が自動で回る</li>
+</ol></nav>
 <main>
-<div class="crumb"><a href="../index.html">トップ</a> / <a href="../index.html#work">実績</a> / 売上を入れるだけで、集計と入金の確認が自動で回る</div>
 <div class="tags"><span class="tag">売上管理</span><span class="tag">試作</span></div>
 <h1>売上を入れるだけで、集計と入金の確認が自動で回る</h1>
 <p class="lead">スプレッドシートで手作業していた売上の入力・集計・進捗の管理を、Google Apps Script で自動にする仕組みの試作です。実際にあった募集の5つの機能をすべて作り、仮の売上62件で動かしています。入金の期日が近い・過ぎた売上は、毎朝 LINE とメールに届きます。</p>
+<div class="stats"><div><div class="n">5つ</div><div class="l">募集にあった機能をすべて作成</div></div><div><div class="n">62件</div><div class="l">仮の売上データで動作を確認</div></div><div><div class="n">毎朝9時</div><div class="l">期日超過・期日間近を LINE とメールに</div></div></div>
 <dl class="meta"><div><dt>種類</dt><dd>試作（仮のデータ）</dd></div><div><dt>対象</dt><dd>月200件ほどの売上</dd></div><div><dt>道具</dt><dd>Google Apps Script・LINE</dd></div><div><dt>使い方</dt><dd>1操作1行の19手順つき</dd></div></dl>
 <h2>募集で挙がっていたこと</h2>
 <ul class="dots"><li>売上の入力・集計・進捗の管理を手作業でしていて、時間がかかる</li><li>手作業による入力や集計の間違いを防ぎたい</li><li>期日の前後に、メールか LINE で知らせてほしい</li><li>エラーが起きた時に、記録と知らせがほしい</li></ul>
-<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>売上をシートに手で入れる</li><li>月末に手で集計する</li><li>入金の遅れは表を見て探す</li></ol><div class="time">毎月の手作業</div></div><div class="after"><h3>これから</h3><ol><li>売上を1行入れる</li><li>金額・状態・集計が自動で出る</li><li>期日が近い・過ぎたら毎朝 LINE に届く</li></ol><div class="time">確認するだけ</div></div></div><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
+<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>売上をシートに手で入れる</li><li>月末に手で集計する</li><li>入金の遅れは表を見て探す</li></ol><div class="time">毎月の手作業</div></div><div class="after"><h3>これから</h3><ol><li>売上を1行入れる</li><li class="m">金額・状態・集計が自動で出る</li><li class="m">期日が近い・過ぎたら毎朝 LINE に届く</li><li>届いた通知を見て確かめる</li></ol><div class="time">確認するだけ</div></div></div><p class="legend"><i></i>色の付いた段は、仕組み（AI・自動処理）が行います。ほかは人の作業です。</p><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
 <h2>作ったもの</h2>
 <ol class="steps"><li>入力のたびの自動処理: 金額（数量×単価）と状態（完了・期日超過・期日間近・未処理）を自動で付け、入力の抜けや間違いはセルを赤くして「要確認」にする</li><li>日次・月次の集計: 日ごと・月ごと・担当ごと・取引先ごとの件数・売上・入金済み・未入金と、月ごとの棒グラフ</li><li>毎朝9時の通知: 期日超過と期日間近を、LINE（横にめくるカードで全件）とメールに1通ずつ。0件の日と、同じ日の2回目は送らない</li><li>LINE は、2025年3月に終わった LINE Notify の代わりに、LINE公式アカウントの Messaging API で送る。鍵はコードにもシートにも書かず、スクリプト プロパティに置く</li><li>エラーの記録と知らせ: 処理ごとの結果を「ログ」シートに残し、送れなかった時は管理者にメール。LINE のカードが断られた時は文字で送り直す</li><li>使い方のシート: 導入から毎日の入力・困った時まで、1操作1行・画面つきの19手順</li></ol>
+<h2>人と仕組みの分担</h2><div class="tw"><table class="roles"><thead><tr><th scope="col">段</th><th scope="col">担当</th><th scope="col">中身</th></tr></thead><tbody><tr><td>売上を1行入れる</td><td><span class="who">人</span></td><td>日付・取引先・数量・単価・期日を入力する</td></tr><tr><td>金額と状態を付ける</td><td><span class="who m">仕組み</span></td><td>入力のたびに計算し、抜けや間違いは赤くして「要確認」にする</td></tr><tr><td>日次・月次の集計</td><td><span class="who m">仕組み</span></td><td>日・月・担当・取引先ごとの表とグラフを更新する</td></tr><tr><td>期日の知らせ</td><td><span class="who m">仕組み</span></td><td>毎朝9時に、期日超過と期日間近を LINE とメールに送る</td></tr><tr><td>入金の確認</td><td><span class="who">人</span></td><td>届いた通知を見て、取引先に確かめる</td></tr></tbody></table></div>
+
+
+<h2>工夫した所</h2><div class="points"><div><h3>知らせすぎない</h3><p>0件の日と、同じ日の2回目は送りません。毎朝届く物が「見なくてよい通知」にならないようにしました。</p></div><div><h3>止まった時に気づける</h3><p>処理ごとの結果を「ログ」シートに残し、送れなかった時は管理者にメールが届きます。</p></div><div><h3>渡したその日から使える</h3><p>導入から毎日の入力・困った時までを、1操作1行・画面つきの19手順にまとめました。</p></div></div>
 
 <h2>画面</h2><figure class="shot"><img loading="lazy" decoding="async" width="1335" height="250" src="img/uriage-sales.webp" alt="「売上」シート。金額と状態は自動で付き、入力の間違いは赤くなる（仮のデータ）"><figcaption>「売上」シート。金額と状態は自動で付き、入力の間違いは赤くなる（仮のデータ）</figcaption></figure><figure class="shot"><img loading="lazy" decoding="async" width="1260" height="500" src="img/uriage-monthly.webp" alt="「月次」シート。月ごと・担当ごとの集計と、月ごとの売上のグラフ（仮のデータ）"><figcaption>「月次」シート。月ごと・担当ごとの集計と、月ごとの売上のグラフ（仮のデータ）</figcaption></figure><figure class="shot w440"><img loading="lazy" decoding="async" width="900" height="827" src="img/uriage-line.webp" alt="毎朝 LINE に届く通知。期日超過・期日間近を5件ずつのカードにして、横にめくって全件見られる（仮のデータ）"><figcaption>毎朝 LINE に届く通知。期日超過・期日間近を5件ずつのカードにして、横にめくって全件見られる（仮のデータ）</figcaption></figure>
 
 <h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">集計 月末に手で集計</div><div class="k">AFTER</div><div class="after">入力のたびに自動</div></div><div><div class="k">BEFORE</div><div class="name">入金の確認 表を見て探す</div><div class="k">AFTER</div><div class="after">毎朝 LINE とメールに届く</div></div><div><div class="k">BEFORE</div><div class="name">入力の間違い 後で気づく</div><div class="k">AFTER</div><div class="after">その場で赤く表示</div></div></div><p class="cap">仮のデータでの動作の確認です。判定・集計・通知の形は手元のテスト11件で確かめ、LINE とメールに実際に届くことも確かめています。</p>
+
 <div class="two">
 <div><h2>使った道具</h2><div class="chips"><span>Google Apps Script</span><span>Googleスプレッドシート</span><span>LINE Messaging API</span><span>Gmail</span></div></div>
 <div><h2>同じ悩みがありそうな方</h2><ul class="dots"><li>売上をスプレッドシートで手作業で管理している</li><li>入金の遅れに気づくのが遅れがち</li><li>毎月の集計に時間がかかる</li></ul></div>
 </div>
-<div class="cta"><p>同じような作業を、楽にできるか相談する</p><a href="../index.html#contact">お問い合わせ</a></div>
+<h2>よくある質問</h2><div class="faq"><details><summary>実際の会社のデータで動いていますか？</summary><p>いいえ。実際にあった募集の内容をもとに作った試作で、仮の売上62件で動かしています。</p></details><details><summary>LINE Notify は終わったと聞きました。</summary><p>はい、2025年3月に終了しています。この試作は、LINE公式アカウントの Messaging API で送っています。</p></details><details><summary>通知が止まった時は、どうなりますか？</summary><p>処理ごとの結果を「ログ」シートに残し、送れなかった時は管理者にメールで知らせます。LINE のカードが断られた時は、文字で送り直します。</p></details></div>
+<h2>ほかの実績</h2><div class="rel"><a href="kintai-gas.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/work-kintai-thumb.webp" alt=""><span><span class="t">勤怠・給与・試作</span><span class="h">勤怠・給与の自動計算（GAS）</span></span></a><a href="ai-bpr.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/3048f4d47a46.webp" alt=""><span><span class="t">製造業・AI活用</span><span class="h">ハイテク製造業の業務改革</span></span></a><a href="estimate-ai.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/1ed0d5e38161.webp" alt=""><span><span class="t">建設業・AI活用</span><span class="h">建設業の見積作成をAIで効率化</span></span></a></div>
+<div class="cta"><p>同じような作業を、楽にできるか相談する</p><p class="sub">60分の無料オンライン相談（Google Meet）は、空いている日時を選ぶだけで予約できます。文章で相談したい方は、フォームからどうぞ。</p>
+<div class="btns"><a href="../index.html#booking">カレンダーから予約</a><a class="ghost" href="../index.html#contact-form">フォームで問い合わせ</a></div></div>
 <a class="back" href="../index.html#work">← 実績の一覧へ戻る</a>
 </main>
 <footer class="foot"><a href="../privacy.html">プライバシーポリシー</a><p>© 2026 Ryota Maruoka</p></footer>

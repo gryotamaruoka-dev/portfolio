@@ -813,3 +813,29 @@ label.file.sd input[type=file] { position: absolute; inset: 0; width: 100%; heig
 #contact-form [role="radiogroup"][aria-invalid="true"] { outline: 1px solid #b4231a; outline-offset: 4px; border-radius: 4px; }
 .file-remove { margin: 8px 0 0; padding: 4px 12px; font-size: 13px; border: 1px solid #d2d2d2; border-radius: 999px; background: #fff; color: #333; cursor: pointer; align-self: flex-start; }
 .file-remove[hidden] { display: none; }
+
+/* お問い合わせの節のタブ（カレンダーから予約／フォームで問い合わせ）。切り替えは booking.js。JS が動かない時は両方見える */
+.ctabs { display: none; width: 100%; max-width: 640px; gap: 8px; margin: 32px 0 28px; }
+.tabs-on .ctabs { display: flex; }
+.ctab { flex: 1; padding: 14px 8px; font: inherit; font-size: 15px; font-weight: 700; color: #333; background: #fff; border: 1px solid #333; cursor: pointer; }
+.ctab[aria-selected="true"] { background: #333; color: #fff; }
+.ctab:focus-visible { outline: 2px solid #1f5f8b; outline-offset: 2px; }
+.cpanel { width: 100%; display: flex; flex-flow: column; align-items: center; }
+.cpanel[hidden] { display: none; }
+.booking { margin-top: 40px; }
+.tabs-on .booking { margin-top: 0; }
+.booking-lead { text-align: center; font-size: 16px; line-height: 1.8; margin: 0 0 24px; }
+.booking-steps { list-style: none; counter-reset: b; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; padding: 0; margin: 0 0 32px; font-size: 14px; font-weight: 700; }
+.booking-steps li { counter-increment: b; display: flex; align-items: center; gap: 8px; }
+.booking-steps li::before { content: counter(b); width: 24px; height: 24px; border-radius: 50%; background: #333; color: #fff; display: grid; place-items: center; font-size: 12px; flex: none; }
+#timerex_calendar { min-height: 600px; width: 100%; }
+#timerex_calendar[hidden] { display: none; }
+.booking-fallback { text-align: center; font-size: 15px; margin: 24px 0 0; }
+.booking-fallback a { text-decoration: underline; }
+.booking-note { text-align: center; font-size: 13px; color: #737373; margin: 20px 0 0; }
+@media (max-width: 640px) {
+  .booking-steps { flex-direction: column; align-items: flex-start; width: fit-content; margin-inline: auto; }
+  /* 狭い窓の PC では TimeRex が幅 550px 以上を求めるので、枠の中に収める */
+  #timerex_calendar > div { min-width: 0 !important; }
+  .ctab { font-size: 14px; }
+}

@@ -11,9 +11,14 @@ a { color: inherit; }
 .top nav a { text-decoration: none; }
 .top .btn { background: var(--dark); color: #fff; border-radius: 999px; padding: 8px 18px; }
 main { max-width: 848px; margin: 0 auto; padding: 48px 24px 96px; }
-.crumb { font-size: 13px; color: var(--sub); }
-.crumb a { text-decoration: none; }
-.tags { display: flex; gap: 8px; margin: 28px 0 16px; }
+.crumb { background: var(--soft); border-bottom: 1px solid #eee; font-size: 13px; color: #5f5f5f; }
+.crumb ol { list-style: none; max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; }
+.crumb li { display: flex; align-items: center; min-width: 0; }
+.crumb li + li::before { content: '＞'; margin: 0 10px; font-size: 11px; color: #aaa; }
+.crumb a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; padding: 4px 0; }
+.crumb a:hover { text-decoration-thickness: 2px; }
+.crumb [aria-current] { overflow-wrap: anywhere; }
+.tags { display: flex; gap: 8px; margin: 0 0 16px; }
 .tag { font-size: 12px; font-weight: 700; padding: 4px 12px; border: 1px solid var(--line); }
 .tag:first-child { background: var(--dark); color: #fff; border-color: var(--dark); }
 h1 { font-size: 32px; line-height: 1.5; margin: 0 0 20px; }
@@ -60,11 +65,71 @@ ol.steps li::before { content: counter(s); flex: none; width: 28px; height: 28px
 .shot { margin: 0 0 28px; }
 .shot img { width: 100%; height: auto; border: 1px solid var(--line); display: block; }
 .shot figcaption { font-size: 12px; color: var(--sub); margin-top: 8px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--dark); color: #fff; margin: 0 0 32px; }
+.stats > div { padding: 22px 20px; border-right: 1px solid rgba(255,255,255,.25); }
+.stats > div:last-child { border-right: none; }
+.stats .n { font-family: Lato, 'Noto Sans JP', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.4; }
+.stats .l { font-size: 12px; color: #d2d2d2; margin-top: 6px; line-height: 1.6; }
+.flow li.m { background: #eef3f8; border-color: #1f5f8b; color: #17466a; font-weight: 700; }
+.flow .after li.m:last-child { background: #eef3f8; color: #17466a; }
+.legend { font-size: 12px; color: var(--sub); margin-top: 10px; }
+.legend i { display: inline-block; width: 12px; height: 12px; background: #eef3f8; border: 1px solid #1f5f8b; vertical-align: -1px; margin-right: 6px; }
+.tw { overflow-x: auto; }
+table.roles { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 480px; }
+table.roles th, table.roles td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+table.roles th { background: var(--soft); font-size: 12px; color: var(--sub); }
+table.roles td:first-child { font-weight: 700; }
+.who { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 10px; border: 1px solid var(--ink); white-space: nowrap; }
+.who.m { background: #eef3f8; border-color: #1f5f8b; color: #17466a; }
+ol.tl { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--dark); }
+ol.tl li { position: relative; padding: 0 0 22px 24px; font-size: 15px; }
+ol.tl li:last-child { padding-bottom: 0; }
+ol.tl li::before { content: ''; position: absolute; left: -7px; top: .5em; width: 12px; height: 12px; background: var(--dark); border-radius: 50%; }
+ol.tl .when { display: block; font-weight: 700; font-size: 13px; }
+.points { display: grid; gap: 12px; }
+.points > div { border: 1px solid var(--line); padding: 18px 20px; }
+.points h3 { font-size: 15px; margin: 0 0 6px; }
+.points p { margin: 0; font-size: 14px; color: #555; }
+.voice { border-left: 4px solid var(--dark); background: var(--soft); margin: 0; padding: 20px 24px; font-size: 15px; }
+.voice + .cap { margin-bottom: 0; }
+.calc { font-size: 13px; background: var(--soft); border: 1px solid var(--line); border-top: none; padding: 12px 20px; margin: 0; }
+.part { border-top: 2px solid var(--dark); margin-top: 56px; padding-top: 8px; }
+.part > h2 { margin-top: 24px; }
+.part > h2 small { display: block; font-size: 13px; color: var(--sub); font-weight: 400; }
+.part h3.sub { font-size: 16px; margin: 32px 0 12px; }
+.part .about { color: #555; font-size: 15px; margin: 0; }
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; padding: 16px 28px 16px 0; font-weight: 700; font-size: 15px; position: relative; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '＋'; position: absolute; right: 4px; top: 16px; }
+.faq details[open] summary::after { content: '−'; }
+.faq p { margin: 0 0 18px; font-size: 14px; color: #555; }
+.rel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.rel a { text-decoration: none; display: block; border: 1px solid var(--line); }
+.rel a:hover { border-color: var(--ink); }
+.rel img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+.rel .t { display: block; font-size: 12px; color: var(--sub); padding: 12px 14px 0; }
+.rel .h { display: block; font-size: 14px; font-weight: 700; padding: 2px 14px 14px; line-height: 1.6; }
+.cta .sub { font-weight: 400; font-size: 14px; color: #555; margin: -8px 0 20px; }
+.cta .btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.cta a.ghost { background: #fff; color: var(--ink); border: 1px solid var(--ink); }
 @media (max-width: 640px) {
   h1 { font-size: 24px; }
   .meta, .flow, .two { grid-template-columns: 1fr; }
   .top nav a:not(.btn) { display: none; }
   .results > div { border-right: none; border-bottom: 1px solid var(--line); }
+  .stats, .rel { grid-template-columns: 1fr; }
+  .stats > div { border-right: none; border-bottom: 1px solid rgba(255,255,255,.25); padding: 16px 20px; }
+  .stats > div:last-child { border-bottom: none; }
+  .rel a { display: grid; grid-template-columns: 96px 1fr; align-items: center; }
+  .cta .btns a { width: 100%; }
+  /* 分担の表は、スマホでは1段ずつ縦に積む（横にはみ出させない） */
+  table.roles { min-width: 0; }
+  table.roles thead { display: none; }
+  table.roles tr { display: block; border: 1px solid var(--line); margin-bottom: 8px; padding: 10px 12px; }
+  table.roles td { display: block; border: none; padding: 2px 0; }
+  table.roles td:nth-child(2) { margin: 4px 0; }
 }
 
 .again-wrap { margin-top: 14px; }

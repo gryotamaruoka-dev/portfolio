@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- meta:start（tools/release_meta.py が入れる。手で直さない） -->
 <title>見積書の作成をAIで効率化し、1〜2日を2〜3時間に | 丸岡 凌大</title>
-<meta name="description" content="見積書のPDFをAIで読み取り、確かめが必要な所だけを人が見る仕組みを作りました。いつものExcelの形で出力します。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 使った道具はAzure Document Intelligence・Azure OpenAI・React・TypeScript・Spring Boot・Docker・AWSです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<meta name="description" content="元請け（一次受け）から見積の依頼を受け、協力会社に見積を頼んで取りまとめる立場（二次受け）の建設会社の事例です。届いた見積の書類をAIで読み取り、読み取りに自信の低い所だけを担当者が確かめて、取引先ごとの書式の Excel で出力する仕組みです。全部をAIに任せず、確認と送信は担当者が行う形にしました。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。">
 <link rel="canonical" href="https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html">
 <meta property="og:title" content="見積書の作成をAIで効率化し、1〜2日を2〜3時間に | 丸岡 凌大">
-<meta property="og:description" content="見積書のPDFをAIで読み取り、確かめが必要な所だけを人が見る仕組みを作りました。いつものExcelの形で出力します。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 使った道具はAzure Document Intelligence・Azure OpenAI・React・TypeScript・Spring Boot・Docker・AWSです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<meta property="og:description" content="元請け（一次受け）から見積の依頼を受け、協力会社に見積を頼んで取りまとめる立場（二次受け）の建設会社の事例です。届いた見積の書類をAIで読み取り、読み取りに自信の低い所だけを担当者が確かめて、取引先ごとの書式の Excel で出力する仕組みです。全部をAIに任せず、確認と送信は担当者が行う形にしました。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。">
 <meta property="og:url" content="https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://gryotamaruoka-dev.github.io/portfolio/assets/og/estimate-ai.png">
@@ -23,8 +23,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://gryotamaruoka-dev.github.io/portfolio/"}, {"@type": "ListItem", "position": 2, "name": "実績", "item": "https://gryotamaruoka-dev.github.io/portfolio/#work"}, {"@type": "ListItem", "position": 3, "name": "見積書の作成をAIで効率化し、1〜2日を2〜3時間に", "item": "https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "見積書の作成をAIで効率化し、1〜2日を2〜3時間に", "description": "見積書のPDFをAIで読み取り、確かめが必要な所だけを人が見る仕組みを作りました。いつものExcelの形で出力します。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 使った道具はAzure Document Intelligence・Azure OpenAI・React・TypeScript・Spring Boot・Docker・AWSです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/og/estimate-ai.png", "author": {"@type": "Person", "name": "丸岡 凌大", "alternateName": "Ryota Maruoka", "jobTitle": "AI業務効率化エンジニア", "url": "https://gryotamaruoka-dev.github.io/portfolio/", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/profile.webp", "email": "mailto:g.ryota.maruoka@gmail.com", "address": {"@type": "PostalAddress", "addressRegion": "大阪府", "addressCountry": "JP"}, "knowsAbout": ["AIを使った業務の効率化・自動化", "業務システム・ツールの開発", "書類やPDFの読み取り・データ化", "Google Apps Script"]}, "inLanguage": "ja", "mainEntityOfPage": "https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://gryotamaruoka-dev.github.io/portfolio/"}, {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://gryotamaruoka-dev.github.io/portfolio/#work"}, {"@type": "ListItem", "position": 3, "name": "見積書の作成をAIで効率化し、1〜2日を2〜3時間に", "item": "https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "見積書の作成をAIで効率化し、1〜2日を2〜3時間に", "description": "元請け（一次受け）から見積の依頼を受け、協力会社に見積を頼んで取りまとめる立場（二次受け）の建設会社の事例です。届いた見積の書類をAIで読み取り、読み取りに自信の低い所だけを担当者が確かめて、取引先ごとの書式の Excel で出力する仕組みです。全部をAIに任せず、確認と送信は担当者が行う形にしました。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。 同じような作業を楽にしたい方は、ページの下から60分の無料相談をご予約ください。", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/og/estimate-ai.png", "author": {"@type": "Person", "name": "丸岡 凌大", "alternateName": "Ryota Maruoka", "jobTitle": "AI業務効率化エンジニア", "url": "https://gryotamaruoka-dev.github.io/portfolio/", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/profile.webp", "email": "mailto:g.ryota.maruoka@gmail.com", "address": {"@type": "PostalAddress", "addressRegion": "大阪府", "addressCountry": "JP"}, "knowsAbout": ["AIを使った業務の効率化・自動化", "業務システム・ツールの開発", "書類やPDFの読み取り・データ化", "Google Apps Script"]}, "inLanguage": "ja", "mainEntityOfPage": "https://gryotamaruoka-dev.github.io/portfolio/works/estimate-ai.html"}</script>
 <!-- meta:end -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
@@ -35,26 +35,37 @@
 <a class="logo" href="../index.html">Profile</a>
 <nav><a href="../index.html#work">Work</a><a href="../index.html#overview">Overview</a><a class="btn" href="../index.html#contact">Contact</a></nav>
 </div></header>
+<nav class="crumb" aria-label="パンくずリスト"><ol>
+<li><a href="../index.html">ホーム</a></li><li><a href="../index.html#work">Work</a></li><li aria-current="page">見積書の作成をAIで効率化し、1〜2日を2〜3時間に</li>
+</ol></nav>
 <main>
-<div class="crumb"><a href="../index.html">トップ</a> / <a href="../index.html#work">実績</a> / 見積書の作成をAIで効率化し、1〜2日を2〜3時間に</div>
 <div class="tags"><span class="tag">建設業</span><span class="tag">AI活用</span></div>
 <h1>見積書の作成をAIで効率化し、1〜2日を2〜3時間に</h1>
-<p class="lead">見積書のPDFをAIで読み取り、確かめが必要な所だけを人が見る仕組みを作りました。いつものExcelの形で出力します。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。</p>
-<dl class="meta"><div><dt>業種</dt><dd>建設業</dd></div><div><dt>体制</dt><dd>2名</dd></div><div><dt>担当</dt><dd>リーダー（要件の整理・開発・導入）</dd></div><div><dt>範囲</dt><dd>要件の整理から運用まで</dd></div></dl>
+<p class="lead">元請け（一次受け）から見積の依頼を受け、協力会社に見積を頼んで取りまとめる立場（二次受け）の建設会社の事例です。届いた見積の書類をAIで読み取り、読み取りに自信の低い所だけを担当者が確かめて、取引先ごとの書式の Excel で出力する仕組みです。全部をAIに任せず、確認と送信は担当者が行う形にしました。リーダーとして要件の整理から運用まで担当し、追加のご依頼を3回いただきました。</p>
+<div class="stats"><div><div class="n">1〜2日 → 2〜3時間</div><div class="l">見積1件の作成にかかる時間</div></div><div><div class="n">3社の書式</div><div class="l">取引先ごとの書式で Excel を自動出力</div></div><div><div class="n">3回</div><div class="l">追加でいただいたご依頼</div></div></div>
+<dl class="meta"><div><dt>業種</dt><dd>建設業（二次受け）</dd></div><div><dt>規模</dt><dd>見積担当2名・月10〜15件</dd></div><div><dt>期間</dt><dd>約4か月（3か月で納品・4か月目に追加対応）</dd></div><div><dt>体制と担当</dt><dd>2名・リーダー（要件の整理・開発・導入）</dd></div></dl>
 <h2>前の課題</h2>
-<ul class="dots"><li>見積書のPDFを見ながら、Excelに手で写していた</li><li>1件の見積作成に1〜2日かかっていた</li></ul>
-<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>PDFを開く</li><li>Excelに手で写す</li><li>全部を見直す</li></ol><div class="time">1〜2日</div></div><div class="after"><h3>これから</h3><ol><li>AIがPDFを読み取る</li><li>確かめが必要な所だけ表示</li><li>人が確認してExcelに出力</li></ol><div class="time">2〜3時間</div></div></div><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
+<ul class="dots"><li>一次受けから届く見積依頼書は PDF・Excel・画像と形がそろわず、目で読んで協力会社ごとに書き写していた</li><li>協力会社から返ってくる見積書も会社ごとに形が違い、1件ずつ読み直していた</li><li>一次受けごとに、フォントの種類・空白・全角半角など書式の決まりが細かく、合わせ直しに時間がかかっていた</li><li>1件の見積作成に、担当者1人で1〜2日かかっていた</li></ul>
+<h2>業務の流れがどう変わるか</h2><div class="flow"><div><h3>いま</h3><ol><li>一次受けの見積依頼書（PDF・Excel・画像）を読み、協力会社ごとに書き写す</li><li>協力会社の各社に依頼を送る</li><li>会社ごとに形の違う見積書を読み取る</li><li>一次受けの書式（フォント・空白・全角半角）に合わせて打ち直す</li><li>一次受けに送る</li></ol><div class="time">人の作業 5つ・1〜2日</div></div><div class="after"><h3>これから</h3><ol><li>依頼書・見積書を取り込む（形式は問わない）</li><li class="m">AIが読み取り、辞書で文字を補正する</li><li class="m">一次受け3社の書式で Excel を作る</li><li>自信の低い所と表記ゆれを確認・修正する</li><li>Excel を協力会社・一次受けへ送る</li></ol><div class="time">人の作業 3つ・2〜3時間</div></div></div><p class="legend"><i></i>色の付いた段は、仕組み（AI・自動処理）が行います。ほかは人の作業です。</p><p class="cap">担当した内容をもとにした、業務のイメージです。実際の画面ではありません。</p>
 <h2>やったこと</h2>
-<ol class="steps"><li>今の作業を聞き取り、これからの流れを決める</li><li>AIで見積書の項目を読み取り、表記のゆれを整える</li><li>読み取りに自信の低い項目を先に見せる確認画面を作る</li><li>いつものExcelの形で出力し、運用まで支える</li></ol>
+<ol class="steps"><li>依頼書と見積書を、PDF・Excel・画像のどれで届いても、AI-OCR（書類の文字を読み取るAI。Azure Document Intelligence）で読み取れるようにした</li><li>読み取りの誤りを直すための辞書を作り、Azure OpenAI で文字の補正と、表記ゆれ（同じ言葉の書き方の違い）の吸収を行う</li><li>読み取りに自信の低い項目（候補の値と信頼度）を先に見せる確認画面を作り、担当者はそこだけ確かめればよい形にした</li><li>一次受けのうち件数の多い上位3社の書式の決まりを Excel の出力に組み込み、出力のときに一次受けを選べるようにした</li><li>協力会社・一次受けへの送信は、今までどおり担当者が行う</li></ol>
+<h2>人と仕組みの分担</h2><div class="tw"><table class="roles"><thead><tr><th scope="col">段</th><th scope="col">担当</th><th scope="col">中身</th></tr></thead><tbody><tr><td>書類の取り込み</td><td><span class="who">人</span></td><td>届いた依頼書・見積書を入れる（PDF・Excel・画像）</td></tr><tr><td>読み取りと補正</td><td><span class="who m">仕組み</span></td><td>AI-OCR で読み取り、辞書と AI で文字を補正する</td></tr><tr><td>書式合わせと Excel の作成</td><td><span class="who m">仕組み</span></td><td>一次受け3社の書式の決まりで出力する</td></tr><tr><td>確認と修正</td><td><span class="who">人</span></td><td>自信の低い項目と表記ゆれを、画面で確かめて直す</td></tr><tr><td>送信</td><td><span class="who">人</span></td><td>協力会社・一次受けへ、今までどおり担当者が送る</td></tr></tbody></table></div>
+
+<h2>進め方</h2><ol class="tl"><li><span class="when">最初の2週間</span>小さく試す。サンプルの見積書をいただき、OCR の読み取りの精度を確かめた。精度が出ると分かったので、数字で報告して本開発へ進めた</li><li><span class="when">最初の1.5か月（上の試しと並行）</span>要件の整理。短い区切りで作っては確かめる進め方で進めた</li><li><span class="when">1.5か月目から（1週ごとに区切って）</span>1週目に画面を作って動きのイメージを合わせ、2週目に OCR の結果と課題を報告。続く2週間で開発し、次の1週間で AWS にテスト環境と本番環境を作った</li><li><span class="when">テスト環境ができてから</span>担当者の方に使ってもらい、1.5週間ごとに「指摘 → 修正 → 報告」をくり返した</li><li><span class="when">3か月が経つ前の2週間</span>お客様の社内のサーバーに入れられるかの受け入れテスト。最初の範囲を納品</li><li><span class="when">4か月目</span>追加のご依頼に対応して完了</li></ol>
+<h2>工夫した所</h2><div class="points"><div><h3>担当者の頭の中にある決まりを、聞き切る</h3><p>書式の決まりは、担当者の頭の中にしかありませんでした。1時間の会議で聞き切りながら、プロジェクトを進めました。</p></div><div><h3>できること・できないことを、先にはっきりさせる</h3><p>AIへの期待が高かったので、できる所とできない所を明確にしました。AIの結果を人が確認してから先へ進む形にすることを資料にして、認識を合わせています。</p></div><div><h3>自信の低い所から見せる</h3><p>読み取った結果を全部見直すのではなく、候補の値と信頼度から不確かな項目を先に出す確認画面にしました。</p></div></div>
 
 
 
-<h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">見積の作成 1〜2日</div><div class="k">AFTER</div><div class="after">2〜3時間</div></div><div><div class="k">BEFORE</div><div class="name">ご依頼 最初の契約</div><div class="k">AFTER</div><div class="after">追加で3回</div></div></div>
+<h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">見積の作成 1〜2日</div><div class="k">AFTER</div><div class="after">2〜3時間</div></div><div><div class="k">BEFORE</div><div class="name">書式合わせ 一次受けの書式に手で打ち直し</div><div class="k">AFTER</div><div class="after">3社の書式で自動出力</div></div><div><div class="k">BEFORE</div><div class="name">ご依頼 最初の契約</div><div class="k">AFTER</div><div class="after">追加で3回</div></div></div>
+<h2>導入後の変化</h2><p class="voice">作業の時間が減ったのはもちろん、これまで人が確認していて漏れのあった部分も少なくなりました。運用を見直すきっかけにもなっています。</p><p class="cap">導入のあとに現場で起きた変化を、担当した私がまとめたものです。</p>
 <div class="two">
 <div><h2>使った道具</h2><div class="chips"><span>Azure Document Intelligence</span><span>Azure OpenAI</span><span>React</span><span>TypeScript</span><span>Spring Boot</span><span>Docker</span><span>AWS</span></div></div>
-<div><h2>同じ悩みがありそうな方</h2><ul class="dots"><li>PDFや紙の書類を、Excelに手で写している</li><li>見積や請求の作成に時間がかかる</li><li>読み取りの間違いが心配で、AIに任せきれない</li></ul></div>
+<div><h2>同じ悩みがありそうな方</h2><ul class="dots"><li>取引先ごとに書式が違う書類を、手で写し直している</li><li>PDF・Excel・画像が混ざって届き、そのままでは使えない</li><li>書式の決まりが細かく、慣れた人しか仕上げられない</li><li>読み取りの間違いが心配で、AIに任せきれない</li></ul></div>
 </div>
-<div class="cta"><p>同じような作業を、楽にできるか相談する</p><a href="../index.html#contact">お問い合わせ</a></div>
+<h2>よくある質問</h2><div class="faq"><details><summary>AIが読み間違えたら、どうなりますか？</summary><p>読み取りに自信の低い項目を先に表示し、担当者が確認・修正してから出力します。確認を通らずに外へ出ることはありません。</p></details><details><summary>今の Excel の書式を変える必要はありますか？</summary><p>この事例では変えていません。取引先ごとの書式の決まりを出力に組み込み、今までと同じ形の Excel で出しています。</p></details><details><summary>PDF 以外の書類も読めますか？</summary><p>この事例では、PDF・Excel・画像のどれで届いても読み取れるようにしました。</p></details></div>
+<h2>ほかの実績</h2><div class="rel"><a href="juku-system.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/0348db44d5a6.webp" alt=""><span><span class="t">教育・システム開発</span><span class="h">学習塾の業務システム刷新</span></span></a><a href="uriage-gas.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/work-uriage-thumb.webp" alt=""><span><span class="t">売上管理・試作</span><span class="h">売上管理の自動化とLINE通知（GAS）</span></span></a><a href="kintai-gas.html"><img loading="lazy" decoding="async" width="800" height="800" src="../assets/work-kintai-thumb.webp" alt=""><span><span class="t">勤怠・給与・試作</span><span class="h">勤怠・給与の自動計算（GAS）</span></span></a></div>
+<div class="cta"><p>同じような作業を、楽にできるか相談する</p><p class="sub">60分の無料オンライン相談（Google Meet）は、空いている日時を選ぶだけで予約できます。文章で相談したい方は、フォームからどうぞ。</p>
+<div class="btns"><a href="../index.html#booking">カレンダーから予約</a><a class="ghost" href="../index.html#contact-form">フォームで問い合わせ</a></div></div>
 <a class="back" href="../index.html#work">← 実績の一覧へ戻る</a>
 </main>
 <footer class="foot"><a href="../privacy.html">プライバシーポリシー</a><p>© 2026 Ryota Maruoka</p></footer>
