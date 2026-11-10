@@ -806,3 +806,10 @@ label.file.sd input[type=file] { position: absolute; inset: 0; width: 100%; heig
 /* アイコンの書体（Material Icons / Symbols）が読めなかった時、アイコンの名前（keyboard_arrow_down など）が
    文字のまま横に伸びて、スマホ幅で横にはみ出す。読めない時でもアイコン1つ分の幅に収める */
 .material-icons, .material-symbols-outlined, .material-symbols { display: inline-block; max-width: 1.25em; overflow: hidden; white-space: nowrap; }
+
+/* 入力の誤りの案内（contact.js が欄の下に出す） */
+.field-error { color: #b4231a; font-size: 13px; line-height: 1.6; margin: 6px 0 0; }
+#contact-form [aria-invalid="true"] { border-color: #b4231a !important; outline: 1px solid #b4231a; }
+#contact-form [role="radiogroup"][aria-invalid="true"] { outline: 1px solid #b4231a; outline-offset: 4px; border-radius: 4px; }
+.file-remove { margin: 8px 0 0; padding: 4px 12px; font-size: 13px; border: 1px solid #d2d2d2; border-radius: 999px; background: #fff; color: #333; cursor: pointer; align-self: flex-start; }
+.file-remove[hidden] { display: none; }
