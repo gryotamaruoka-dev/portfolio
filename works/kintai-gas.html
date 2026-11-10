@@ -3,8 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- meta:start（tools/release_meta.py が入れる。手で直さない） -->
 <title>スマホで打刻するだけで、給与計算と明細までできあがる | 丸岡 凌大</title>
-<meta name="description" content="単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。">
+<meta name="description" content="単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。 使った道具はGoogle Apps Script・Googleフォーム・Googleスプレッドシート・Google ドライブです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<link rel="canonical" href="https://gryotamaruoka-dev.github.io/portfolio/works/kintai-gas.html">
+<meta property="og:title" content="スマホで打刻するだけで、給与計算と明細までできあがる | 丸岡 凌大">
+<meta property="og:description" content="単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。 使った道具はGoogle Apps Script・Googleフォーム・Googleスプレッドシート・Google ドライブです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。">
+<meta property="og:url" content="https://gryotamaruoka-dev.github.io/portfolio/works/kintai-gas.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://gryotamaruoka-dev.github.io/portfolio/assets/og/kintai-gas.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="丸岡 凌大 | ポートフォリオ">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#333333">
+<link rel="icon" href="../assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/brand/favicon-16.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://gryotamaruoka-dev.github.io/portfolio/"}, {"@type": "ListItem", "position": 2, "name": "実績", "item": "https://gryotamaruoka-dev.github.io/portfolio/#work"}, {"@type": "ListItem", "position": 3, "name": "スマホで打刻するだけで、給与計算と明細までできあがる", "item": "https://gryotamaruoka-dev.github.io/portfolio/works/kintai-gas.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "スマホで打刻するだけで、給与計算と明細までできあがる", "description": "単発のスタッフも含む月50名ほどの勤怠と給与を、Googleフォームとスプレッドシートで回す仕組みの試作です。実際にあった募集の6つの機能をすべて作り、仮のスタッフ8人・1か月分のデータで動かしています。 使った道具はGoogle Apps Script・Googleフォーム・Googleスプレッドシート・Google ドライブです。同じような作業を楽にしたい方は、ページの下のお問い合わせからご相談ください。", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/og/kintai-gas.png", "author": {"@type": "Person", "name": "丸岡 凌大", "alternateName": "Ryota Maruoka", "jobTitle": "AI業務効率化エンジニア", "url": "https://gryotamaruoka-dev.github.io/portfolio/", "image": "https://gryotamaruoka-dev.github.io/portfolio/assets/profile.webp", "email": "mailto:g.ryota.maruoka@gmail.com", "address": {"@type": "PostalAddress", "addressRegion": "大阪府", "addressCountry": "JP"}, "knowsAbout": ["AIを使った業務の効率化・自動化", "業務システム・ツールの開発", "書類やPDFの読み取り・データ化", "Google Apps Script"]}, "inLanguage": "ja", "mainEntityOfPage": "https://gryotamaruoka-dev.github.io/portfolio/works/kintai-gas.html"}</script>
+<!-- meta:end -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&subset=japanese">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
 <link rel="stylesheet" href="case.css">
@@ -29,7 +50,7 @@
 <div class="demo">
 <div class="phone"><div class="screen">
 <div class="gf-bar"><span>9:41</span><span>見本</span></div>
-<form id="gf" class="gf-form" onsubmit="return false" novalidate>
+<form id="gf" class="gf-form" novalidate>
 <div class="gf-card gf-head"><h3>打刻</h3><p>出勤・休憩・退勤のときに送ってください。</p><p class="gf-req">* 必須の質問です</p></div>
 <div class="gf-card gf-q" id="q1"><label class="t">氏名 <b>*</b></label><small>名前が無いときは管理者に伝えてください</small>
 <select id="who"><option value="">選択</option><option>佐藤 花子（S001）</option><option>田中 一郎（S002）</option><option>高橋 美咲（S003）</option><option>伊藤 健太（S004）</option><option>渡辺 さくら（S005）</option><option>山本 大輔（S006）</option><option>中村 結衣（S007）</option><option>小林 翔（S008）</option></select></div>
@@ -38,7 +59,7 @@
 <div class="gf-actions"><button class="gf-send" id="send" type="button">送信</button><button class="gf-clear" id="clr" type="button">フォームをクリア</button></div>
 </form>
 <div class="gf-card gf-head gf-done" id="done"><h3>打刻</h3><p>打刻しました（見本なので、どこにも送られていません）。</p>
-<p style="margin-top:14px"><button class="gf-clear" id="again" type="button">別の打刻を送る</button></p></div>
+<p class="again-wrap"><button class="gf-clear" id="again" type="button">別の打刻を送る</button></p></div>
 </div></div>
 <div class="demo-note"><span class="badge">見本のフォーム</span>
 <p>本物の打刻フォームと同じ3問です。名前と種別を選んで「送信」を押すと、スプレッドシートの「打刻」シートに入る行が右に出ます。<b>見本なので、送信してもどこにも送られません。</b></p>
@@ -46,28 +67,8 @@
 <tbody id="rows"><tr><td>2026/11/09 8:58</td><td>佐藤 花子（S001）</td><td>出勤</td><td></td></tr></tbody></table>
 <p class="cap">本物では、この行をもとに勤怠・給与・ダッシュボードが自動で計算し直されます。</p></div>
 </div>
-<script>
-(function () {
-  var $ = function (id) { return document.getElementById(id); };
-  function kind() { var r = document.querySelector('input[name=kind]:checked'); return r ? r.value : ''; }
-  function td(t) { var c = document.createElement('td'); c.textContent = t; return c; }
-  $('send').addEventListener('click', function () {
-    var ok = true;
-    $('q1').classList.toggle('err', !$('who').value); $('q2').classList.toggle('err', !kind());
-    if (!$('who').value || !kind()) return;
-    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
-    var ts = d.getFullYear() + '/' + p(d.getMonth() + 1) + '/' + p(d.getDate()) + ' ' + d.getHours() + ':' + p(d.getMinutes());
-    var tr = document.createElement('tr'); tr.className = 'new';
-    [ts, $('who').value, kind(), $('memo').value].forEach(function (t) { tr.appendChild(td(t)); });
-    $('rows').appendChild(tr);
-    $('gf').style.display = 'none'; $('done').classList.add('on'); document.querySelector('.screen').scrollTop = 0;
-  });
-  function reset() { $('gf').reset(); $('q1').classList.remove('err'); $('q2').classList.remove('err'); }
-  $('clr').addEventListener('click', reset);
-  $('again').addEventListener('click', function () { reset(); $('done').classList.remove('on'); $('gf').style.display = ''; });
-})();
-</script>
-<h2>画面</h2><figure class="shot"><img src="img/kintai-dashboard.png" alt="ダッシュボード（仮のデータ）"><figcaption>ダッシュボード（仮のデータ）</figcaption></figure><figure class="shot"><img src="img/kintai-payslip.png" alt="自動で作られた給与明細の PDF（仮のデータ）"><figcaption>自動で作られた給与明細の PDF（仮のデータ）</figcaption></figure>
+<script src="demo-kintai.js"></script>
+<h2>画面</h2><figure class="shot"><img loading="lazy" decoding="async" width="1250" height="610" src="img/kintai-dashboard.webp" alt="ダッシュボード（仮のデータ）"><figcaption>ダッシュボード（仮のデータ）</figcaption></figure><figure class="shot"><img loading="lazy" decoding="async" width="990" height="760" src="img/kintai-payslip.webp" alt="自動で作られた給与明細の PDF（仮のデータ）"><figcaption>自動で作られた給与明細の PDF（仮のデータ）</figcaption></figure>
 <h2>ファイル</h2><div class="files"><a class="dl" href="https://drive.google.com/file/d/16Fl3DkxwH6Dg2sRmjVfX0S-8p8z5SZeD/view" target="_blank" rel="noopener"><span class="ic">XLSX</span><span><span class="nm">勤怠・給与（試作）のスプレッドシート</span><br><span class="sz">Excel・約1.3MB・Google ドライブで開きます（そこからダウンロードできます）</span></span></a><p>仮のデータ入り。ダッシュボード・勤怠・スタッフ・使い方（28手順）などのシートが見られます。自動計算とメニュー（Apps Script）は Excel には入らないため、数字は計算済みの値です。</p></div>
 <h2>取り組みの成果</h2><div class="results"><div><div class="k">BEFORE</div><div class="name">打刻 紙・メモを集めて手入力</div><div class="k">AFTER</div><div class="after">スマホで送るだけ</div></div><div><div class="k">BEFORE</div><div class="name">給与の計算 人ごとに手計算</div><div class="k">AFTER</div><div class="after">打刻のたびに自動</div></div><div><div class="k">BEFORE</div><div class="name">給与明細 1人ずつ作成</div><div class="k">AFTER</div><div class="after">全員分をメニューから一括</div></div></div><p class="cap">仮のデータでの動作の確認です。計算の決まり（時給・日給・日払い・打刻の漏れ）は手元のテスト8件で確かめています。</p>
 <div class="two">
@@ -77,5 +78,6 @@
 <div class="cta"><p>同じような作業を、楽にできるか相談する</p><a href="../index.html#contact">お問い合わせ</a></div>
 <a class="back" href="../index.html#work">← 実績の一覧へ戻る</a>
 </main>
+<footer class="foot"><a href="../privacy.html">プライバシーポリシー</a><p>© 2026 Ryota Maruoka</p></footer>
 </body>
 </html>
