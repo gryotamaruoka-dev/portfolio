@@ -6,7 +6,8 @@ body { margin: 0; color: var(--ink); background: #fff; font-family: 'Noto Sans J
 a { color: inherit; }
 .top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); border-bottom: 1px solid #eee; }
 .top-in { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
-.logo { font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; }
+.logo { font-family: Lato, sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; display: block; line-height: 0; }
+.logo img { display: block; height: 26px; width: auto; }  /* 屋号のロゴ（2026-11-11） */
 .top nav { display: flex; gap: 24px; align-items: center; font-family: Lato, sans-serif; font-weight: 700; font-size: 14px; }
 .top nav a { text-decoration: none; }
 .top .btn { background: var(--dark); color: #fff; border-radius: 999px; padding: 8px 18px; }

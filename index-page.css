@@ -5618,3 +5618,9 @@ justify-content: flex-start;
 /* <section>・<label> にした所が、もとの見た目（div・p）と同じになるように（<h2> は元の .p35 などの規則がそのまま効く） */
 section.box { display: flex; }
 label.text.sd { display: block; cursor: default; }
+
+/* 屋号のロゴ（tools/release_meta.py が入れる。2026-11-11）。左上の「Profile」の字をロゴの画像に替え、メニューと縦の位置をそろえる */
+.brand-logo { display: block; height: 30px; width: auto; }
+.r3 { align-items: center !important; }
+@media (max-width: 840px) { .brand-logo { height: 26px; } }
+@media (max-width: 540px) { .brand-logo { height: 24px; } .r3 { justify-content: space-between !important; } .r4 { width: auto !important; align-items: flex-start !important; } }
